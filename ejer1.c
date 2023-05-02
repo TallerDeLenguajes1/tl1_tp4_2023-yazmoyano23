@@ -13,6 +13,7 @@ struct Tarea {
 void cargarTareas(Tarea** ListaT, int cant);
 void mostrarTareas(Tarea** ListaT, int cant);
 int controlTareas(Tarea** ListaT,Tarea** tRealizadas , int cant);
+void liberarMemoria(Tarea** ListaT, int cant)
 
 //PROGRAMA PRINCIPAL
 int main()
@@ -40,18 +41,15 @@ int main()
     printf("\n-------------LISTA MODIFICADA---------------\n");
     mostrarTareas(listaTareas, cantTareas);
 
-    //Control de tareas
 
+    //LIBERACION DE MEMORIA (Por cada malloc tengo un free) 
+    liberarMemoria(listaTareas, cantTareas);
+    liberarMemoria(TareasRealizadas, cantTareasRealizadas);
 
-    //LIBERACION DE MEMORIA (Por cada malloc tengo un free)
-    for (int i = 0; i < cantTareas; i++)
-    {
-        free(listaTareas[i]);
-        free(listaTareas[i]->Descripcion);
-    }
     
     //Libero el puntero doble
     free(listaTareas);
+    free(TareasRealizadas);
 
     return 0;
 }
@@ -118,4 +116,12 @@ int controlTareas(Tarea** ListaT,Tarea** tRealizadas , int cant){
 
     return indice;
     
+}
+
+void liberarMemoria(Tarea** ListaT, int cant){
+    for (int i = 0; i < cant; i++) 
+    {
+        free(ListaT[i]);
+        free(ListaT[i]->Descripcion);
+    }
 }

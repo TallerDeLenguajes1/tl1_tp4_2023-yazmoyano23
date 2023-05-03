@@ -13,7 +13,7 @@ struct Tarea {
 void cargarTareas(Tarea** ListaT, int cant);
 void mostrarTareas(Tarea** ListaT, int cant);
 int controlTareas(Tarea** ListaT,Tarea** tRealizadas , int cant);
-void liberarMemoria(Tarea** ListaT, int cant)
+void liberarMemoria(Tarea** ListaT, int cant);
 
 //PROGRAMA PRINCIPAL
 int main()
